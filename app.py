@@ -3,12 +3,11 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import cv2
 import numpy as np
-
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 # Path to the directory containing symbol templates
-template_dir = r"C:\Users\Aakarsh Roy\Desktop\images"
+template_dir = r"C:\Users\Aakarsh Roy\Pictures\Emoji Dataset\kanishk"
 
 # Load template images from the directory
 template_images = []
@@ -45,7 +44,7 @@ def recognize_symbol(query_image):
             best_match_score = max_val
             best_match = i
 
-    if best_match is not None and best_match_score >= 0.40:
+    if best_match is not None and best_match_score >= 0.60:
         confidence_percent = "{:.2f}".format(best_match_score * 100)  # Convert confidence to percentage with 2 decimal places
         filename = os.listdir(template_dir)[best_match]
         result_text = f"Recognized symbol: '{os.path.splitext(filename)[0]}' with confidence: {confidence_percent}%"

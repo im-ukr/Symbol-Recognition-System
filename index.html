@@ -115,7 +115,7 @@ h1 {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<div class="message">After uploading the image, please click on submit! <b>Click at any point on the greyscale image to know the pixel value of that point.</b></div>
+<div class="message">After uploading the image, please click on submit! <b>Click at any point on the grayscale image to know the 'pixel value' and 'Spatial Coordinates' of that point.</b></div>
 <div class="container">
     <h1>Symbol Recognition</h1>
     <label for="fileInput" class="uploadButton">Upload Image</label>
@@ -236,7 +236,7 @@ function displayPixelValue(event) {
     const data = imageData.data;
     const pixelValue = (data[0] + data[1] + data[2]) / 3; // Average of RGB values for greyscale
 
-    alert(`Pixel value at (x:${x}, y:${y}): ${pixelValue}`);
+    alert(`Pixel value at (x=${x}, y=${y}): ${pixelValue}`);
 }
 
 // Add click event listener to greyscale image canvas
