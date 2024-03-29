@@ -58,23 +58,20 @@ h1 {
     font-size: 18px;
     color: #333;
 }
-
 #imagePreview {
-    max-width: 100%;
-    margin-top: 20px;
-    display: none;
-    margin-left: auto;
-    margin-right: auto;
-    animation: fadeIn 0.5s; /* Image preview fade-in animation */
+    max-width: 45%; /* Set the width of the preview image */
+    position: relative; /* Position the image relative to its normal position */
+    left: 35%; /* Position the image x% from the left edge */
 }
 
 #imagePreviewGray {
-    max-width: 100%;
-    margin-top: 20px;
-    margin-left: 10px; /* Add left margin */
-    display: inline-block; /* Display inline-block to align images horizontally */
+    max-width: 45%; /* Set the width of the grayscale image */
+    position: relative; /* Position the image relative to its normal position */
+    right: 35%; /* Position the image x% from the right edge */
     animation: fadeIn 5s;
 }
+
+
 
 @keyframes fadeIn {
     from {
@@ -98,6 +95,18 @@ h1 {
     }
 }
 
+/* Styling for two words to change colours */
+@keyframes highlight {
+    30% { color: red; }
+    50% { color: blue; }
+    100% { color: green; }
+}
+
+.highlight {
+    animation: highlight 2s infinite;
+}
+
+
 .message {
     position: absolute;
     top: 0;
@@ -110,12 +119,25 @@ h1 {
     text-align: center;
     animation: moveMessage 39s linear infinite; /* Decreased speed */
 }
+.images-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+}
+
+.preview-canvas {
+    max-width: 48%; /* Set the width of each image */
+}
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<div class="message">After uploading the image, please click on submit! <b>Click at any point on the grayscale image to know the 'pixel value' and 'Spatial Coordinates' of that point.</b></div>
+<!-- HTML -->
+<div class="message">
+    After uploading the image, please click on submit!
+    <b>Click at any point on the grayscale image to know the '<span class="highlight">Pixel Value</span>' and '<span class="highlight">Spatial Coordinates</span>' of that point.</b>
+</div>
+
 <div class="container">
     <h1>Symbol Recognition</h1>
     <label for="fileInput" class="uploadButton">Upload Image</label>
@@ -126,6 +148,7 @@ h1 {
     <div class="images-container">
         <canvas id="imagePreview" class="preview-canvas" style="display: none;"></canvas>
         <canvas id="imagePreviewGray" class="preview-canvas" style="display: none;"></canvas>
+    </div>
  </div>
     
 <script>
@@ -236,7 +259,7 @@ function displayPixelValue(event) {
     const data = imageData.data;
     const pixelValue = (data[0] + data[1] + data[2]) / 3; // Average of RGB values for greyscale
 
-    alert(`Pixel value at (x=${x}, y=${y}): ${pixelValue}`);
+    alert(`You have selected coordinates (x,y) = (${x},${y})\nThe Pixel Value at that point is ${pixelValue}`);
 }
 
 // Add click event listener to greyscale image canvas
