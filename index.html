@@ -62,13 +62,13 @@ h1 {
 #imagePreview {
     max-width: 45%; /* Set the width of the preview image */
     position: relative; /* Position the image relative to its normal position */
-    left: 25%; /* Position the image x% from the left edge */
+    left: 35%; /* Position the image x% from the left edge */
 }
 
 #imagePreviewGray {
     max-width: 45%; /* Set the width of the grayscale image */
     position: relative; /* Position the image relative to its normal position */
-    right: 25%; /* Position the image x% from the right edge */
+    right: 35%; /* Position the image x% from the right edge */
     animation: fadeIn 5s;
 }
 
@@ -159,12 +159,12 @@ h1 {
 .about-us h3 {
     margin: 0;
     font-size: 18px;
-    color: whitesmoke;
+    color: black;
     animation: colorChange 4s infinite;
 }
 
 @keyframes colorChange {
-    50% { color: whitesmoke; }
+    50% { color: black; }
     100% { color: black; }
 }
 
@@ -198,7 +198,7 @@ h1 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 90%;
     object-fit: cover; /* Cover the entire container */
     z-index: -1; /* Place the video behind other content */
 }
@@ -214,7 +214,47 @@ h1 {
     height: 100vh;
 }
 
+.about-us h4,
+.about-us p {
+    color: black;
+}
+/* Style for the email input box */
+.email-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 800px;
+  height: 30px; /* Set the desired height */
+  font-size: 18px; /* Set the font size */ /* Set the width here */
+}
 
+/* Style for the submit button */
+.submit-button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+/* Input box */
+
+
+/* Submit button */
+.submit-button {
+    width: 100px; /* Set the desired width */
+    height: 43px; /* Set the desired height */
+    font-size: 18px; /* Set the font size */
+}
+
+@keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    .blink {
+        animation: blink 2s infinite;
+    }
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -245,9 +285,9 @@ h1 {
 <!-- About Us section -->
 <div class="about-us" id="aboutUs">
     <video autoplay muted loop id="bgVideo">
-        <source src="C:\Users\Aakarsh Roy\Downloads\4665104-hd_1920_1080_30fps.mp4" type="video/mp4">
+        <source src="C:\Users\Aakarsh Roy\Downloads\9809-221185519 (online-video-cutter.com).mp4" type="video/mp4">
     </video>
-    <h2><b>About Us</b></h2>
+    <h2><b>IPCV Sem-VI Project 2023-24 &#128512;</b></h2>
     <div class="founder">
         <img src="C:\Users\Aakarsh Roy\Pictures\Emoji Dataset\Emoji-Directory\im_ukr77.jpg" alt="Founder 1">
         <h3>Utkarsh Roy</h3>
@@ -260,9 +300,65 @@ h1 {
         <img src="C:\Users\Aakarsh Roy\Pictures\Emoji Dataset\Emoji-Directory\rabindar.png" alt="Founder 2">
         <h3>Rabindra Mishra</h3>
     </div>
+    <div class="founder">
+        <img src="C:\Users\Aakarsh Roy\Downloads\Raj.jpeg" alt="Founder 2">
+        <h3>Rajgaurav Mishra</h3>
+        
+    </div><br><br><br><br><br>
+    <div class="email-form">
+        <form>
+          <input type="text" id="emailInput" name="email" class="email-input" placeholder="Write your query here..." style="width: 200px;">
+          <button type="submit" class="submit-button" onclick="submitQuery()">Submit</button>
+        </form>
+      </div><br><br>
+      
+    
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!-- Add more founders as needed -->
+
+    <div style="position: relative;">
+        <div style="background-color: lightblue; padding: 20px;">
+            <div style="display: flex; justify-content: center;">
+                <h1 style="margin-bottom: 0;" class="blink">Frequently Asked Questions (FAQs)</h1>
+            </div>
+        </div>
+        <div style="position: absolute; left: -100%; right: -100%; top: 0; bottom: 0; background-color: lightblue; z-index: -1;"></div>
+    </div>
+    
+<h4>Q: How does the symbol recognition system work?</h4>
+<p>A: The system uses template matching to compare the uploaded image with pre-defined symbols.</p><br>
+
+<h4>Q: How does the symbol recognition process work?</h4>
+<p>A: The process involves loading template images of symbols, preprocessing the query image, and then comparing it with each template using template matching.</p><br>
+
+<h4>Q: What kind of symbols can be recognized?</h4>
+<p>A: The project is designed to recognize simple symbols or shapes that have been pre-defined in the template images.</p><br>
+
+<h4>Q: What is the confidence threshold for recognizing a symbol?</h4>
+<p>A: The confidence threshold is currently set to 70% and can be adjusted as per the requirements.</p><br>
+
+<h4>Q: Can I add my own symbols for recognition?</h4>
+<p>A: Yes, you can add your own symbols by placing them in the specified directory and ensuring they are in PNG or JPG format.</p><br>
+
+<h4>Q: How accurate is the symbol recognition?</h4>
+<p>A: The accuracy of the symbol recognition depends on the quality of the template images and the similarity between the query image and the templates.</p><br>
+
+<h4>Q: Is there a limit to the number of symbols that can be recognized?</h4>
+<p>A: There is no hard limit to the number of symbols that can be recognized, but the performance may vary based on the number of templates and the complexity of the symbols.</p><br>
+
+<h4>Q: Can I use this project for real-time symbol recognition?</h4>
+<p>A: While the project is not optimized for real-time processing, it can be used for batch processing of images containing symbols.  Real-time performance may vary depending on the complexity of the symbols and the hardware capabilities.</p><br>
+
+<h4>Q: What technologies are used in this project?</h4>
+<p>A: This project is built using Python with the Flask framework for the web server and OpenCV for image processing.</p><br>
+
+<h4>Q: How can I improve the accuracy of symbol recognition?</h4>
+<p>A: You can improve the accuracy by using high-quality template images, adjusting the confidence threshold, and experimenting with different preprocessing techniques.</p><br>
+
+    
 </div>
 
+</div>
 <script>
 function displayGreyscaleImage(file) {
     const canvas = document.getElementById('imagePreviewGray');
@@ -427,6 +523,10 @@ function uploadImage() {
 $('#toggleButton').click(function() {
     $('#aboutUs').slideToggle();
 });
+
+function submitQuery() {
+    alert('Query submitted successfully');
+}
 
 </script>
 </body>
