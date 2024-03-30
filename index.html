@@ -10,7 +10,8 @@ body {
     margin: 0;
     padding: 0;
     background: linear-gradient(to bottom, #87CEFA, #ADD8E6); /* Gradient background */
-    overflow: hidden; /* Hide horizontal scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: scroll; /* Show vertical scrollbar */
 }
 
 .container {
@@ -61,13 +62,13 @@ h1 {
 #imagePreview {
     max-width: 45%; /* Set the width of the preview image */
     position: relative; /* Position the image relative to its normal position */
-    left: 35%; /* Position the image x% from the left edge */
+    left: 25%; /* Position the image x% from the left edge */
 }
 
 #imagePreviewGray {
     max-width: 45%; /* Set the width of the grayscale image */
     position: relative; /* Position the image relative to its normal position */
-    right: 35%; /* Position the image x% from the right edge */
+    right: 25%; /* Position the image x% from the right edge */
     animation: fadeIn 5s;
 }
 
@@ -127,12 +128,100 @@ h1 {
 .preview-canvas {
     max-width: 48%; /* Set the width of each image */
 }
+/* New styles for the About Us section */
+.about-us {
+    display: none; /* Hide the About Us section by default */
+    margin-top: 50px;
+    padding-top: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.about-us h2 {
+    margin-bottom: 20px;
+    color: black;
+}
+
+.about-us .founder {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.about-us img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+.about-us h3 {
+    margin: 0;
+    font-size: 18px;
+    color: whitesmoke;
+    animation: colorChange 4s infinite;
+}
+
+@keyframes colorChange {
+    50% { color: whitesmoke; }
+    100% { color: black; }
+}
+
+
+#toggleButton {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: transparent;
+    color: black;
+    border: 4px solid #007bff; /* Border with the desired color */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth button hover effect */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.7); /* Glow effect */
+}
+
+#toggleButton:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Light background color on hover */
+}
+
+#toggleButton.on {
+    background-color: rgba(0, 123, 255, 0.1); /* Light background color when active */
+}
+
+/* Style for the video */
+/* Style for the video */
+#bgVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire container */
+    z-index: -1; /* Place the video behind other content */
+}
+
+
+/* Style for the content */
+.about-us {
+    position: relative;
+    z-index: 1; /* Ensure content is above the video */
+    color: white; /* Example text color */
+    padding: 20px;
+    text-align: center;
+    height: 100vh;
+}
+
+
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <!-- HTML -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <div class="message">
     After uploading the image, please click on submit!
     <b>Click at any point on the grayscale image to know the '<span class="highlight">Pixel Value</span>' and '<span class="highlight">Spatial Coordinates</span>' of that point.</b>
@@ -150,7 +239,30 @@ h1 {
         <canvas id="imagePreviewGray" class="preview-canvas" style="display: none;"></canvas>
     </div>
  </div>
-    
+<!-- Toggle button for About Us section -->
+<button id="toggleButton"><b>About Us</b></button>
+
+<!-- About Us section -->
+<div class="about-us" id="aboutUs">
+    <video autoplay muted loop id="bgVideo">
+        <source src="C:\Users\Aakarsh Roy\Downloads\4665104-hd_1920_1080_30fps.mp4" type="video/mp4">
+    </video>
+    <h2><b>About Us</b></h2>
+    <div class="founder">
+        <img src="C:\Users\Aakarsh Roy\Pictures\Emoji Dataset\Emoji-Directory\im_ukr77.jpg" alt="Founder 1">
+        <h3>Utkarsh Roy</h3>
+    </div>
+    <div class="founder">
+        <img src="C:\Users\Aakarsh Roy\Downloads\kannu.jpg" alt="Founder 2">
+        <h3>Kanishk Mandrelia</h3>
+    </div>
+    <div class="founder">
+        <img src="C:\Users\Aakarsh Roy\Pictures\Emoji Dataset\Emoji-Directory\rabindar.png" alt="Founder 2">
+        <h3>Rabindra Mishra</h3>
+    </div>
+    <!-- Add more founders as needed -->
+</div>
+
 <script>
 function displayGreyscaleImage(file) {
     const canvas = document.getElementById('imagePreviewGray');
@@ -312,6 +424,10 @@ function uploadImage() {
         }
     });
 }
+$('#toggleButton').click(function() {
+    $('#aboutUs').slideToggle();
+});
+
 </script>
 </body>
 </html>
