@@ -62,13 +62,13 @@ h1 {
 #imagePreview {
     max-width: 45%; /* Set the width of the preview image */
     position: relative; /* Position the image relative to its normal position */
-    left: 35%; /* Position the image x% from the left edge */
+    left: 25%; /* Position the image x% from the left edge */
 }
 
 #imagePreviewGray {
     max-width: 45%; /* Set the width of the grayscale image */
     position: relative; /* Position the image relative to its normal position */
-    right: 35%; /* Position the image x% from the right edge */
+    right: 25%; /* Position the image x% from the right edge */
     animation: fadeIn 5s;
 }
 
@@ -83,7 +83,7 @@ h1 {
     }
 }
 
-/* Moving message animation */
+/* Moving message animation OF TOP MESSAGE*/
 @keyframes moveMessage {
     0% {
         transform: translateX(-100%);
@@ -96,7 +96,7 @@ h1 {
     }
 }
 
-/* Styling for two words to change colours */
+/* Styling for two words IN TOP MSG to change colours */
 @keyframes highlight {
     30% { color: red; }
     50% { color: blue; }
@@ -113,15 +113,15 @@ h1 {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: skyblue; /* Sky blue background color */
+    background-color: skyblue; /* Sky blue background color(ofc TOP MSG bhai)*/
     color: black;
     padding: 10px 0;
     font-size: 14px;
     text-align: center;
-    animation: moveMessage 39s linear infinite; /* Decreased speed */
+    animation: moveMessage 39s linear infinite; /* Decreased speed(jyada hi tej bhag raha tha) */
 }
 .images-container {
-    display: flex; /* Use flexbox for layout */
+    display: flex; /* Use flexbox for layout -- jaruri tha */
     justify-content: space-between; /* Distribute items evenly along the main axis */
 }
 
@@ -191,7 +191,7 @@ h1 {
     background-color: rgba(0, 123, 255, 0.1); /* Light background color when active */
 }
 
-/* Style for the video */
+
 /* Style for the video */
 #bgVideo {
     position: absolute;
@@ -208,7 +208,7 @@ h1 {
 .about-us {
     position: relative;
     z-index: 1; /* Ensure content is above the video */
-    color: white; /* Example text color */
+    color: white; 
     padding: 20px;
     text-align: center;
     height: 100vh;
@@ -218,7 +218,7 @@ h1 {
 .about-us p {
     color: black;
 }
-/* Style for the email input box */
+/* Style for the input box - email?!*/
 .email-input {
   padding: 5px;
   border: 1px solid #ccc;
@@ -237,7 +237,7 @@ h1 {
   border-radius: 3px;
   cursor: pointer;
 }
-/* Input box */
+
 
 
 /* Submit button */
@@ -255,6 +255,7 @@ h1 {
     .blink {
         animation: blink 2s infinite;
     }
+    
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -275,6 +276,10 @@ h1 {
     <button onclick="clearImage()" class="clearButton">Clear Image</button>
     <p id="output"></p>
     <div class="images-container">
+        <img src="C:\Users\Aakarsh Roy\Downloads\electronics-gadgets-ezgif.com-crop.gif" class="custom-gif3" style="position: absolute; top: 75px; left: 980px; width: 130px; height: 130px;">
+        <!--<img src="C:\Users\Aakarsh Roy\Downloads\blue-blueflame.gif" class="custom-gif2" style="position: absolute; top: 110px; left: 1050px; width: 100px; height: 110px;"> -->
+        <img src="C:\Users\Aakarsh Roy\Downloads\detective-magnifying-glass.gif" class="custom-gif" style="position: absolute; top: 80px; left: 420px; width: 120px; height: 110px;">
+        <img src="C:\Users\Aakarsh Roy\Downloads\lenss2.png" class="custom-image" style="position: absolute; top: 80px; left: 920px; width: 70px; height: 70px;">
         <canvas id="imagePreview" class="preview-canvas" style="display: none;"></canvas>
         <canvas id="imagePreviewGray" class="preview-canvas" style="display: none;"></canvas>
     </div>
@@ -285,7 +290,7 @@ h1 {
 <!-- About Us section -->
 <div class="about-us" id="aboutUs">
     <video autoplay muted loop id="bgVideo">
-        <source src="C:\Users\Aakarsh Roy\Downloads\9809-221185519 (online-video-cutter.com).mp4" type="video/mp4">
+        <source src="C:\Users\Aakarsh Roy\Downloads\Untitled video - Made with Clipchamp (2).mp4" type="video/mp4">
     </video>
     <h2><b>IPCV Sem-VI Project 2023-24 &#128512;</b></h2>
     <div class="founder">
@@ -314,7 +319,7 @@ h1 {
       
     
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <!-- Add more founders as needed -->
+
 
     <div style="position: relative;">
         <div style="background-color: lightblue; padding: 20px;">
@@ -347,7 +352,7 @@ h1 {
 <p>A: There is no hard limit to the number of symbols that can be recognized, but the performance may vary based on the number of templates and the complexity of the symbols.</p><br>
 
 <h4>Q: Can I use this project for real-time symbol recognition?</h4>
-<p>A: While the project is not optimized for real-time processing, it can be used for batch processing of images containing symbols.  Real-time performance may vary depending on the complexity of the symbols and the hardware capabilities.</p><br>
+<p>A: While the project is not optimized for real-time processing, it can be used for batch processing of images containing symbols.</p><br>
 
 <h4>Q: What technologies are used in this project?</h4>
 <p>A: This project is built using Python with the Flask framework for the web server and OpenCV for image processing.</p><br>
@@ -401,7 +406,7 @@ function displayGreyscaleImage(file) {
                 }
                 ctx.putImageData(imageData, 0, 0);
 
-                canvas.style.display = 'inline-block'; // Change to inline-block to align next to the original image
+                canvas.style.display = 'inline-block'; 
 
             };
             img.src = e.target.result;
@@ -467,7 +472,7 @@ function displayPixelValue(event) {
     const data = imageData.data;
     const pixelValue = (data[0] + data[1] + data[2]) / 3; // Average of RGB values for greyscale
 
-    alert(`You have selected coordinates (x,y) = (${x},${y})\nThe Pixel Value at that point is ${pixelValue}`);
+    alert(`You have selected coordinates (x,y) = (${x},${y})\nThe Pixel Value at this point is ${pixelValue}`);
 }
 
 // Add click event listener to greyscale image canvas
@@ -481,7 +486,7 @@ function clearImage() {
     const ctx = canvas.getContext('2d');
     const canvasGray = document.getElementById('imagePreviewGray');
     const ctxGray = canvasGray.getContext('2d');
-    const pixelValueMessage = document.getElementById('pixelValueMessage'); // Get the pixel value message element
+    const pixelValueMessage = document.getElementById('pixelValueMessage'); 
 
     fileInput.value = '';
     outputElement.innerText = '';
