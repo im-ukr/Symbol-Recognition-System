@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 # Path to the directory containing symbol templates
-template_dir = r"C:\Users\Aakarsh Roy\Pictures\Emoji Dataset\Emoji-Directory"
+template_dir = os.path.join(os.path.dirname(__file__), "Emoji-Directory")
 
 # Load template images from the directory
 template_images = []
