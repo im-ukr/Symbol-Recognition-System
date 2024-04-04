@@ -107,19 +107,18 @@ h1 {
     animation: highlight 2s infinite;
 }
 
-
 .message {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: skyblue; /* Sky blue background color(ofc TOP MSG bhai)*/
+    background-color: skyblue;  
     color: black;
     padding: 10px 0;
     font-size: 14px;
     text-align: center;
-    animation: moveMessage 39s linear infinite; /* Decreased speed(jyada hi tej bhag raha tha) */
-}
+    animation: moveMessage 60s linear infinite; 
+} 
 .images-container {
     display: flex; /* Use flexbox for layout -- jaruri tha */
     justify-content: space-between; /* Distribute items evenly along the main axis */
@@ -225,7 +224,7 @@ h1 {
   border-radius: 3px;
   width: 800px;
   height: 30px; /* Set the desired height */
-  font-size: 18px; /* Set the font size */ /* Set the width here */
+  font-size: 14px; /* Set the font size */ /* Set the width here */
 }
 
 /* Style for the submit button */
@@ -256,6 +255,9 @@ h1 {
         animation: blink 2s infinite;
     }
     
+    .loadcolorgif {
+    display: none;
+}
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -276,44 +278,50 @@ h1 {
     <button onclick="clearImage()" class="clearButton">Clear Image</button>
     <p id="output"></p>
     <div class="images-container">
-        <img src="add-laptop-gif-path" class="custom-gif3" style="position: absolute; top: 75px; left: 980px; width: 130px; height: 130px;">
-        <img src="add-magnifying-detective-path" class="custom-gif" style="position: absolute; top: 80px; left: 420px; width: 120px; height: 110px;">
-        <img src="add-lens-img-path" class="custom-image" style="position: absolute; top: 80px; left: 920px; width: 70px; height: 70px;">
+        <img src="project content/laptop.gif" class="custom-gif3" style="position: absolute; top: 75px; left: 980px; width: 130px; height: 130px;">
+        <img src="project content/detective-magnifying-glass.gif" class="custom-gif" style="position: absolute; top: 80px; left: 420px; width: 120px; height: 110px;">
+        <img src="project content/magnifying-glass.png" class="custom-image" style="position: absolute; top: 80px; left: 920px; width: 70px; height: 70px;">
+        <img src="project content/loading-colorful.gif" class="loadcolorgif" style="position: absolute; top: 10px; left: 338px; width: 840px; height: 50px;animation-iteration-count: infinite;">
+        <!--<img src="project content/lines.gif" class="lines" style="position: absolute; top: 510px; left: 0px; width: 2000px; height: 250px;animation-iteration-count: infinite;">
+        <img src="project content/progress-progressbar.gif" class="pbar" style="position: absolute; top: 125px; left: 698px; width: 120px; height: 30px;">
+        <img src="project content/among-us.gif" class="checkmark" style="position: absolute; top: 235px; left: 1030px; width: 90px; height: 90px;">-->
         <canvas id="imagePreview" class="preview-canvas" style="display: none;"></canvas>
         <canvas id="imagePreviewGray" class="preview-canvas" style="display: none;"></canvas>
     </div>
  </div>
 <!-- Toggle button for About Us section -->
-<button id="toggleButton"><b>About Us</b></button>
+<button id="toggleButton"><b>About</b></button>
 
 <!-- About Us section -->
 <div class="about-us" id="aboutUs">
     <video autoplay muted loop id="bgVideo">
-        <source src="add bg-video.mp4 path" type="video/mp4">
+        <source src="project content/videobg.mp4" type="video/mp4">
     </video>
     <h2><b>IPCV Sem-VI Project 2023-24 &#128512;</b></h2>
     <div class="founder">
-        <img src="utkarsh-img-path" alt="Founder 1">
+        <img src="project content/utkarsh.jpg" alt="Founder 1">
         <h3>Utkarsh Roy</h3>
     </div>
     <div class="founder">
-        <img src="kanishk-img-path" alt="Founder 2">
+        <img src="project content/kanishk.jpg" alt="Founder 2">
         <h3>Kanishk Mandrelia</h3>
     </div>
     <div class="founder">
-        <img src="rabindra-img-path" alt="Founder 2">
+        <img src="project content/rabindra.png" alt="Founder 2">
         <h3>Rabindra Mishra</h3>
     </div>
     <div class="founder">
-        <img src="raj-img-path" alt="Founder 2">
+        <img src="project content/Raj.jpeg" alt="Founder 2">
         <h3>Rajgaurav Mishra</h3>
         
     </div><br><br><br><br><br>
     <div class="email-form">
         <form>
-          <input type="text" id="emailInput" name="email" class="email-input" placeholder="Write your query here..." style="width: 200px;">
+          <input type="text" id="emailInput" name="email" class="email-input" placeholder="Have Queries? Write here..." style="width: 200px;">
           <button type="submit" class="submit-button" onclick="submitQuery()">Submit</button>
         </form>
+        <img src="project content/quote.gif" class="image" style="position: absolute; top: 160px; left: 450px; width: 600px; height: 600px;">
+        <img src="project content/thinking-face.gif" class="image1" style="position: absolute; top: 320px; left: 930px; width: 90px; height: 90px;">
       </div><br><br>
       
     
@@ -493,6 +501,7 @@ function clearImage() {
     canvas.style.display = 'none';
     ctxGray.clearRect(0, 0, canvasGray.width, canvasGray.height);
     canvasGray.style.display = 'none';
+    hideLoadColorGif();
 }
 
 
@@ -508,6 +517,7 @@ function uploadImage() {
 
     const formData = new FormData();
     formData.append('image', file);
+    showLoadColorGif();
 
     $.ajax({
         url: 'http://127.0.0.1:5000/upload',
@@ -530,6 +540,16 @@ $('#toggleButton').click(function() {
 
 function submitQuery() {
     alert('Query submitted successfully');
+}
+
+function showLoadColorGif() {
+    // Show the loadcolorgif image
+    $('.loadcolorgif').show();
+}
+
+function hideLoadColorGif() {
+    // Hide the loadcolorgif image
+    $('.loadcolorgif').hide();
 }
 
 </script>
